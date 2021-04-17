@@ -31,7 +31,7 @@ fun MainScreen(
                 actions = {
                     IconButton(
                         onClick = {
-                            viewModel.onToggleMode()
+                            viewModel.onToggleMode(!isDarkTheme)
                         }) {
                         Icon(
                             imageVector = if (isDarkTheme) Icons.Filled.LightMode

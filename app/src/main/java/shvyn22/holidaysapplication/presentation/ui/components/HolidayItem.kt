@@ -54,10 +54,12 @@ fun HolidayItem(
                 Text(
                     text = "${item.name} (${item.country})",
                     style = MaterialTheme.typography.body1,
+                    color = Color.Black
                 )
                 Text(
                     text = item.date,
-                    style = MaterialTheme.typography.body2
+                    style = MaterialTheme.typography.body2,
+                    color = Color.Black
                 )
             }
             IconButton(

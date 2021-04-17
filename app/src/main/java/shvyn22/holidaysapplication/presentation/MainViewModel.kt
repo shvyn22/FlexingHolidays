@@ -7,14 +7,18 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
+import shvyn22.holidaysapplication.data.PreferencesManager
 import shvyn22.holidaysapplication.data.model.Holiday
 import shvyn22.holidaysapplication.repository.AppRepository
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val repository: AppRepository
+    private val repository: AppRepository,
+    private val preferences: PreferencesManager
 ): ViewModel(){
+
+    val prefs = preferences.preferencesFlow
 
     val isDarkMode = mutableStateOf(false)
 
@@ -44,7 +48,8 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    fun onToggleMode() = viewModelScope.launch {
-        isDarkMode.value = !isDarkMode.value
+    fun onToggleMode(newValue: Boolean) = viewModelScope.launch {
+        //isDarkMode.value = !isDarkMode.value
+        preferences.editNightMode(newValue)
     }
 }

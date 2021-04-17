@@ -1,6 +1,10 @@
 package shvyn22.holidaysapplication.di
 
 import android.app.Application
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.PreferenceDataStoreFactory
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStoreFile
 import androidx.room.Room
 import dagger.Module
 import dagger.Provides
@@ -40,4 +44,11 @@ object AppModule {
     @Provides
     fun provideFavoriteDao(db: AppDatabase) : FavoriteDao =
         db.favoriteDao()
+
+    @Singleton
+    @Provides
+    fun provideDataStore(app: Application): DataStore<Preferences> =
+        PreferenceDataStoreFactory.create(
+            produceFile = { app.preferencesDataStoreFile("preferences") }
+        )
 }
