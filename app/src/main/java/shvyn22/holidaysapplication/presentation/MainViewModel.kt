@@ -20,8 +20,6 @@ class MainViewModel @Inject constructor(
 
     val prefs = preferences.preferencesFlow
 
-    val isDarkMode = mutableStateOf(false)
-
     val holidays = mutableStateOf<List<Holiday>>(listOf())
     val favoriteHolidays = mutableStateOf<List<Holiday>>(listOf())
 
@@ -49,7 +47,6 @@ class MainViewModel @Inject constructor(
     }
 
     fun onToggleMode(newValue: Boolean) = viewModelScope.launch {
-        //isDarkMode.value = !isDarkMode.value
         preferences.editNightMode(newValue)
     }
 }
