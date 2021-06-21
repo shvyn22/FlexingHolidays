@@ -7,8 +7,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
-import shvyn22.holidaysapplication.data.PreferencesManager
-import shvyn22.holidaysapplication.data.model.Holiday
+import shvyn22.holidaysapplication.data.preferences.PreferencesManager
+import shvyn22.holidaysapplication.data.local.model.Holiday
 import shvyn22.holidaysapplication.repository.AppRepository
 import javax.inject.Inject
 

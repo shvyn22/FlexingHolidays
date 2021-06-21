@@ -1,20 +1,20 @@
-package shvyn22.holidaysapplication.data.dao
+package shvyn22.holidaysapplication.data.local.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
-import shvyn22.holidaysapplication.data.model.Holiday
+import shvyn22.holidaysapplication.data.local.model.Holiday
 
 @Dao
 interface FavoriteDao {
 
     @Query("SELECT * FROM Favorite")
-    fun getFavorites() : Flow<List<Holiday>>
+    fun getFavorites(): Flow<List<Holiday>>
 
     @Query("SELECT EXISTS (SELECT 1 FROM Favorite WHERE uuid = :id)")
-    fun exists(id: String) : Flow<Boolean>
+    fun exists(id: String): Flow<Boolean>
 
     @Insert
     suspend fun insert(item: Holiday)

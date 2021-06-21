@@ -4,7 +4,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 
 @Composable
-fun HolidayTheme (
+fun HolidayTheme(
     isDarkTheme: Boolean,
     content: @Composable () -> Unit
 ) {

@@ -4,8 +4,8 @@ import android.content.Context
 import android.telephony.TelephonyManager
 import dagger.hilt.android.qualifiers.ApplicationContext
 import shvyn22.holidaysapplication.api.ApiInterface
-import shvyn22.holidaysapplication.data.dao.FavoriteDao
-import shvyn22.holidaysapplication.data.model.Holiday
+import shvyn22.holidaysapplication.data.local.dao.FavoriteDao
+import shvyn22.holidaysapplication.data.local.model.Holiday
 import javax.inject.Inject
 
 class AppRepository @Inject constructor(
@@ -17,7 +17,7 @@ class AppRepository @Inject constructor(
 
         val tm = context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
         val code = tm.networkCountryIso
-        val response = api.getHolidays(code, 2020)
+        val response = api.getHolidays(code)
         return response.holidays
     }
 

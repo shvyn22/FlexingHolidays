@@ -8,7 +8,7 @@ interface ApiInterface {
     @GET("holidays")
     suspend fun getHolidays(
         @Query("country") country: String,
-        @Query("year") year: Int,
+        @Query("year") year: Int = 2020,
         @Query("key") key: String = API_KEY
-    ) : ApiResponse
+    ): ApiResponse
 }

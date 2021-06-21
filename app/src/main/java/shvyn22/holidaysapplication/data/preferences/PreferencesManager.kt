@@ -1,4 +1,4 @@
-package shvyn22.holidaysapplication.data
+package shvyn22.holidaysapplication.data.preferences
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences

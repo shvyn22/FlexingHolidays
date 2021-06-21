@@ -1,4 +1,4 @@
-package shvyn22.holidaysapplication.presentation
+package shvyn22.holidaysapplication.presentation.ui
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
@@ -7,6 +7,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import shvyn22.holidaysapplication.presentation.MainViewModel
 import shvyn22.holidaysapplication.presentation.ui.components.FavoriteHolidayItem
 
 @Composable

@@ -17,7 +17,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.flow.Flow
-import shvyn22.holidaysapplication.data.model.Holiday
+import kotlinx.coroutines.flow.flowOf
+import shvyn22.holidaysapplication.data.local.model.Holiday
 import shvyn22.holidaysapplication.presentation.ui.theme.*
 
 @Composable
@@ -73,7 +74,7 @@ fun HolidayItem(
             ) {
                 Icon(
                     imageVector = if (isFavoriteState.value) Icons.Filled.Favorite
-                                    else Icons.Outlined.FavoriteBorder,
+                    else Icons.Outlined.FavoriteBorder,
                     contentDescription = null,
                 )
             }
@@ -87,50 +88,13 @@ fun FavoriteHolidayItem(
     onRemoveFromFavorite: (Holiday) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Surface(
-        modifier = Modifier
-            .fillMaxWidth()
-    ) {
-        Row(
-            modifier = modifier
-                .background(estimateSeason(item.date).color)
-                .padding(6.dp),
-        ) {
-            Icon(
-                imageVector = if (item.public) Icons.Filled.Public else Icons.Filled.Lock,
-                contentDescription = null,
-                modifier = Modifier
-                    .padding(end = 10.dp)
-                    .align(Alignment.CenterVertically)
-                    .weight(1f)
-            )
-            Column(
-                modifier = Modifier
-                    .padding(end = 10.dp)
-                    .weight(8f)
-            ) {
-                Text(
-                    text = "${item.name} (${item.country})",
-                    style = MaterialTheme.typography.body1,
-                )
-                Text(
-                    text = item.date,
-                    style = MaterialTheme.typography.body2
-                )
-            }
-            IconButton(
-                onClick = { onRemoveFromFavorite(item) },
-                modifier = Modifier
-                    .align(Alignment.CenterVertically)
-                    .weight(1f)
-            ) {
-                Icon(
-                    imageVector = Icons.Filled.Favorite,
-                    contentDescription = null,
-                )
-            }
-        }
-    }
+    HolidayItem(
+        item = item,
+        isFavorite = { flowOf(true) },
+        onAddToFavorite = { },
+        onRemoveFromFavorite = onRemoveFromFavorite,
+        modifier = modifier
+    )
 }
 
 enum class Seasons(val color: Color) {
@@ -140,7 +104,7 @@ enum class Seasons(val color: Color) {
     AUTUMN(orange)
 }
 
-fun estimateSeason(date: String) : Seasons{
+fun estimateSeason(date: String): Seasons {
     val month = date.slice(
         date.indexOfFirst { it == '-' } + 1
                 until date.indexOfLast { it == '-' }).toInt()

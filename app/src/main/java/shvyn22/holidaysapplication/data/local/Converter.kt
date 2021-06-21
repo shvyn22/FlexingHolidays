@@ -1,7 +1,7 @@
-package shvyn22.holidaysapplication.data
+package shvyn22.holidaysapplication.data.local
 
 import androidx.room.TypeConverter
-import shvyn22.holidaysapplication.data.model.Weekday
+import shvyn22.holidaysapplication.data.local.model.Weekday
 
 class Converter {
 

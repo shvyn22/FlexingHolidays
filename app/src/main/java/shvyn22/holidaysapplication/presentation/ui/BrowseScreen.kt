@@ -15,9 +15,9 @@ fun BrowseScreen(
     viewModel: MainViewModel,
     modifier: Modifier = Modifier
 ) {
-    LazyColumn (
+    LazyColumn(
         modifier = modifier
-    ){
+    ) {
         items(viewModel.holidays.value) { holiday ->
             Box(
                 Modifier

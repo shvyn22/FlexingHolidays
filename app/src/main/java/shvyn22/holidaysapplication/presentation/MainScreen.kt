@@ -24,6 +24,7 @@ fun MainScreen(
         BottomNavScreens.Browse,
         BottomNavScreens.Favorite
     )
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -32,10 +33,11 @@ fun MainScreen(
                     IconButton(
                         onClick = {
                             viewModel.onToggleMode(!isDarkTheme)
-                        }) {
+                        }
+                    ) {
                         Icon(
                             imageVector = if (isDarkTheme) Icons.Filled.LightMode
-                                            else Icons.Filled.DarkMode,
+                            else Icons.Filled.DarkMode,
                             contentDescription = null
                         )
                     }
@@ -53,6 +55,7 @@ fun MainScreen(
             navController = navController,
             viewModel = viewModel,
             modifier = Modifier
-                .padding(innerPadding))
+                .padding(innerPadding)
+        )
     }
 }

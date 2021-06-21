@@ -16,17 +16,17 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
 import shvyn22.holidaysapplication.R
-import shvyn22.holidaysapplication.presentation.FavoriteScreen
 import shvyn22.holidaysapplication.presentation.MainViewModel
 import shvyn22.holidaysapplication.presentation.ui.BrowseScreen
+import shvyn22.holidaysapplication.presentation.ui.FavoriteScreen
 
 sealed class BottomNavScreens(
     val route: String,
     @StringRes val resourceId: Int,
     val icon: ImageVector
 ) {
-    object Browse: BottomNavScreens("Browse", R.string.text_browse, Icons.Filled.Public)
-    object Favorite: BottomNavScreens("Favorite", R.string.text_favorite, Icons.Filled.Favorite)
+    object Browse : BottomNavScreens("Browse", R.string.text_browse, Icons.Filled.Public)
+    object Favorite : BottomNavScreens("Favorite", R.string.text_favorite, Icons.Filled.Favorite)
 }
 
 @Composable
@@ -42,13 +42,15 @@ fun MainScreenNavConfig(
         composable(BottomNavScreens.Browse.route) {
             BrowseScreen(
                 viewModel = viewModel,
-                modifier = modifier)
+                modifier = modifier
+            )
         }
 
         composable(BottomNavScreens.Favorite.route) {
             FavoriteScreen(
                 viewModel = viewModel,
-                modifier = modifier)
+                modifier = modifier
+            )
         }
     }
 }
@@ -60,7 +62,7 @@ fun HolidayBottomNavBar(
 ) {
     BottomNavigation {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
-        val currentRoute = navBackStackEntry?.arguments?.getString(KEY_ROUTE)
+        val currentRoute = navBackStackEntry?.destination?.route
         items.forEach { screen ->
             BottomNavigationItem(
                 icon = {
@@ -76,9 +78,14 @@ fun HolidayBottomNavBar(
                 },
                 selected = currentRoute == screen.route,
                 onClick = {
-                    navController.popBackStack(navController.graph.startDestination, false)
-                    if (currentRoute != screen.route) navController.navigate(screen.route)
-            })
+                    navController.navigate(screen.route) {
+                        popUpTo(navController.graph.startDestinationId) {
+                            saveState = true
+                        }
+                        launchSingleTop = true
+                        restoreState = true
+                    }
+                })
         }
     }
 }
