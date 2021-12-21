@@ -21,7 +21,7 @@ This application is based on [HolidayAPI](https://holidayapi.com/v1/).
 * **[Jetpack Compose](https://developer.android.com/jetpack/compose)** for UI
 * API-based remote data layer.
   * **[Retrofit](https://square.github.io/retrofit/)** for network queries.
-  * **[GSON](https://github.com/google/gson)** for parsing JSON.\
+  * **[GSON](https://github.com/google/gson)** for parsing JSON.
 * **[DataStore](https://developer.android.com/jetpack/androidx/releases/datastore)** for working with user preferences (e.g. light/dark mode)
 * **[Room](https://developer.android.com/jetpack/androidx/releases/room)** for local data layer.
 * **[Lifecycle components](https://developer.android.com/jetpack/androidx/releases/lifecycle)**.
