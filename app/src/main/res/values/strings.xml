@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HolidaysApplication</string>
+    <string name="app_name">FlexingHolidays</string>
 
     <string name="text_browse">Browse</string>
     <string name="text_favorite">Favorite</string>

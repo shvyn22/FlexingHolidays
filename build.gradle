@@ -1,29 +1,46 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext {
-        appCompatVersion = "1.2.0"
-        constraintLayoutVersion = "2.0.4"
-        dataStoreVersion = "1.0.0-alpha08"
+        // Kotlin
+        kotlinVersion = "1.5.31"
+        ktxVersion = "1.7.0"
+
+        // Activity
+        activityVersion = "1.4.0"
+
+        // AppCompat
+        appCompatVersion = "1.4.0"
+
+        // UI
+        materialVersion = "1.6.0-alpha01"
+
+        // Lifecycle
+        lifecycleVersion = "2.4.0"
+
+        // Room
+        roomVersion = "2.4.0"
+
+        // Coroutines
         coroutinesVersion = "1.5.0"
-        espressoVersion = "3.3.0"
-        fragmentVersion = "1.3.0-beta01"
-        gradleVersion = "7.0.0-alpha12"
+
+        // Hilt
         hiltAndroidXVersion = "1.0.0-alpha03"
-        hiltVersion = "2.31.2-alpha"
-        junitVersion = "4.13.2"
-        kotlinVersion = "1.5.10"
-        ktxVersion = "1.5.0"
-        lifecycleVersion = "2.3.1"
-        materialVersion = "1.4.0-alpha01"
-        navigationVersion = "2.3.1"
-        roomVersion = "2.3.0"
-        testExtJunitVersion = "1.1.2"
+        hiltVersion = "2.37"
+
+        // DataStore
+        dataStoreVersion = "1.0.0"
+
+        // Retrofit
         retrofitVersion = "2.8.1"
-        okHttpVersion = "4.3.1"
-        composeVersion = "1.0.0-beta09"
-        activityVersion = "1.2.2"
-        activityComposeVersion = "1.3.0-beta02"
-        navComposeVersion = "2.4.0-alpha03"
+
+        // Gradle
+        gradleVersion = "7.0.2"
+
+        // Compose
+        composeVersion = "1.0.5"
+        navComposeVersion = "2.4.0-beta02"
+        constraintComposeVersion = "1.0.0-rc02"
+        hiltNavigationCompose = "1.0.0-rc01"
     }
     repositories {
         google()
@@ -33,8 +50,6 @@ buildscript {
         classpath "com.android.tools.build:gradle:$gradleVersion"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
     }
 }
 
