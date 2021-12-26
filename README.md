@@ -18,11 +18,11 @@ This application is based on [HolidayAPI](https://holidayapi.com/v1/).
 ## Tech stack and concepts
 * **[Kotlin](https://kotlinlang.org/)** as programming language.
 * **[Kotlin coroutines](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/)** as framework for asynchronous jobs and **Flow** as dataholder.
-* **[Jetpack Compose](https://developer.android.com/jetpack/compose)** for UI
+* **[Jetpack Compose](https://developer.android.com/jetpack/compose)** for UI.
 * API-based remote data layer.
   * **[Retrofit](https://square.github.io/retrofit/)** for network queries.
   * **[GSON](https://github.com/google/gson)** for parsing JSON.
-* **[DataStore](https://developer.android.com/jetpack/androidx/releases/datastore)** for working with user preferences (e.g. light/dark mode)
+* **[DataStore](https://developer.android.com/jetpack/androidx/releases/datastore)** for working with user preferences (e.g. light/dark mode).
 * **[Room](https://developer.android.com/jetpack/androidx/releases/room)** for local data layer.
 * **[Lifecycle components](https://developer.android.com/jetpack/androidx/releases/lifecycle)**.
   * **ViewModel** for implementing MVVM pattern.
