@@ -1,25 +1,34 @@
 package shvyn22.flexingholidays.repository
 
-import shvyn22.flexingholidays.api.ApiInterface
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import shvyn22.flexingholidays.data.local.dao.FavoriteDao
-import shvyn22.flexingholidays.data.local.model.Holiday
-import javax.inject.Inject
+import shvyn22.flexingholidays.data.local.model.HolidayModel
+import shvyn22.flexingholidays.data.remote.api.ApiService
+import shvyn22.flexingholidays.data.util.fromHolidayDTOtoModel
 
 class RepositoryImpl(
-    private val api: ApiInterface,
-    private val favoriteDao: FavoriteDao
+	private val api: ApiService,
+	private val favoriteDao: FavoriteDao
 ) : Repository {
 
-    override suspend fun getHolidays(code: String): List<Holiday>{
-        val response = api.getHolidays(code)
-        return response.holidays
-    }
+	override suspend fun getHolidays(code: String): Flow<List<HolidayModel>> = flow {
+		val response = api.getHolidays(code)
+		if (response.status == 200)
+			emit(fromHolidayDTOtoModel(response.holidays))
+		else
+			emit(emptyList())
+	}
 
-    override fun getFavoriteHolidays() = favoriteDao.getFavorites()
+	override fun getFavoriteHolidays() =
+		favoriteDao.getFavoriteHolidays()
 
-    override fun isFavorite(id: String) = favoriteDao.exists(id)
+	override fun isHolidayFavorite(id: String) =
+		favoriteDao.isHolidayFavorite(id)
 
-    override suspend fun addFavorite(item: Holiday) = favoriteDao.insert(item)
+	override suspend fun insertFavoriteHoliday(item: HolidayModel) =
+		favoriteDao.insertFavoriteHoliday(item)
 
-    override suspend fun deleteFavorite(item: Holiday) = favoriteDao.delete(item)
+	override suspend fun deleteFavoriteHoliday(item: HolidayModel) =
+		favoriteDao.deleteFavoriteHoliday(item)
 }

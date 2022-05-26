@@ -5,8 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "Favorite")
-data class Holiday(
-
+data class HolidayModel(
     @PrimaryKey
     @ColumnInfo(name = "uuid")
     val uuid: String,

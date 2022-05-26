@@ -4,13 +4,13 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 
 @Composable
-fun HolidayTheme(
+fun AppTheme(
     isDarkTheme: Boolean,
     content: @Composable () -> Unit
 ) {
     MaterialTheme(
         colors = if (isDarkTheme) DarkColors else LightColors,
-        shapes = HolidayShapes,
+        shapes = AppShapes,
         content = content
     )
 }

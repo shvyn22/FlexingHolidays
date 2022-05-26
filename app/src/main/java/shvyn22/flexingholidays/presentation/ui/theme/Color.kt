@@ -4,10 +4,17 @@ import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.ui.graphics.Color
 
-val yellow = Color(0xFFFFFE00)
-val orange = Color(0xFFFF7F00)
-val capri = Color(0xFF01BFFF)
-val springBud = Color(0xFFA7FC01)
+val capri500 = Color(0xFF01BFFF)
+val capri400 = Color(0xFF0099CC)
+
+val springBud500 = Color(0xFFA7FC01)
+val springBud400 = Color(0xFF88CB01)
+
+val yellow500 = Color(0xFFFFFE00)
+val yellow400 = Color(0xFFB3B300)
+
+val orange500 = Color(0xFFFF7F00)
+val orange400 = Color(0xFFCC6600)
 
 val black900 = Color(0xFF1C1C1C)
 val black800 = Color(0xFF3C3C3C)

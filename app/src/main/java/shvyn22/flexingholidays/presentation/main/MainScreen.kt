@@ -1,62 +1,49 @@
 package shvyn22.flexingholidays.presentation.main
 
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.DarkMode
-import androidx.compose.material.icons.filled.LightMode
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.navigation.compose.rememberNavController
-import shvyn22.flexingholidays.R
 import shvyn22.flexingholidays.presentation.MainViewModel
-import shvyn22.flexingholidays.presentation.ui.components.BottomNavScreens
-import shvyn22.flexingholidays.presentation.ui.components.HolidayBottomNavBar
-import shvyn22.flexingholidays.presentation.ui.components.MainScreenNavConfig
+import shvyn22.flexingholidays.presentation.ui.components.AppBar
+import shvyn22.flexingholidays.presentation.ui.components.BottomNavBar
+import shvyn22.flexingholidays.presentation.ui.components.NavigationConfig
+import shvyn22.flexingholidays.presentation.ui.components.Screen
 
 @Composable
 fun MainScreen(
-    viewModel: MainViewModel,
-    isDarkTheme: Boolean
+	viewModel: MainViewModel,
+	modifier: Modifier = Modifier
 ) {
-    val navController = rememberNavController()
-    val bottomNavItems = listOf(
-        BottomNavScreens.Browse,
-        BottomNavScreens.Favorite
-    )
+	val navController = rememberNavController()
+	val bottomNavItems = listOf(
+		Screen.Browse,
+		Screen.Favorite
+	)
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text(stringResource(id = R.string.app_name)) },
-                actions = {
-                    IconButton(
-                        onClick = {
-                            viewModel.onToggleMode(!isDarkTheme)
-                        }
-                    ) {
-                        Icon(
-                            imageVector = if (isDarkTheme) Icons.Filled.LightMode
-                            else Icons.Filled.DarkMode,
-                            contentDescription = null
-                        )
-                    }
-                }
-            )
-        },
-        bottomBar = {
-            HolidayBottomNavBar(
-                navController = navController,
-                items = bottomNavItems
-            )
-        }
-    ) { innerPadding ->
-        MainScreenNavConfig(
-            navController = navController,
-            viewModel = viewModel,
-            modifier = Modifier
-                .padding(innerPadding)
-        )
-    }
+	val isDarkTheme = !MaterialTheme.colors.isLight
+
+	Scaffold(
+		topBar = {
+			AppBar(
+				isDarkTheme = isDarkTheme,
+				onToggleTheme = viewModel::editThemePreferences
+			)
+		},
+		bottomBar = {
+			BottomNavBar(
+				navController = navController,
+				items = bottomNavItems
+			)
+		}
+	) { innerPadding ->
+		NavigationConfig(
+			navController = navController,
+			viewModel = viewModel,
+			modifier = modifier
+				.padding(innerPadding)
+		)
+	}
 }
