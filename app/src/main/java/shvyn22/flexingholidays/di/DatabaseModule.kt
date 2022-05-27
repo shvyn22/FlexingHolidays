@@ -15,20 +15,20 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
 
-	@Singleton
-	@Provides
-	fun provideDatabase(app: Application): AppDatabase =
-		Room
-			.databaseBuilder(
-				app,
-				AppDatabase::class.java,
-				DATABASE_NAME
-			)
-			.fallbackToDestructiveMigration()
-			.build()
+    @Singleton
+    @Provides
+    fun provideDatabase(app: Application): AppDatabase =
+        Room
+            .databaseBuilder(
+                app,
+                AppDatabase::class.java,
+                DATABASE_NAME
+            )
+            .fallbackToDestructiveMigration()
+            .build()
 
-	@Singleton
-	@Provides
-	fun provideFavoriteDao(db: AppDatabase): FavoriteDao =
-		db.favoriteDao()
+    @Singleton
+    @Provides
+    fun provideFavoriteDao(db: AppDatabase): FavoriteDao =
+        db.favoriteDao()
 }

@@ -13,24 +13,24 @@ import shvyn22.flexingholidays.presentation.ui.theme.AppTheme
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-	private val viewModel: MainViewModel by viewModels()
+    private val viewModel: MainViewModel by viewModels()
 
-	override fun onCreate(savedInstanceState: Bundle?) {
-		super.onCreate(savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-		val tm = getSystemService(TELEPHONY_SERVICE) as TelephonyManager
-		viewModel.setCountryCode(tm.networkCountryIso)
+        val tm = getSystemService(TELEPHONY_SERVICE) as TelephonyManager
+        viewModel.setCountryCode(tm.networkCountryIso)
 
-		setContent {
-			val theme = viewModel.isDarkTheme.collectAsState()
+        setContent {
+            val theme = viewModel.isDarkTheme.collectAsState()
 
-			AppTheme(
-				isDarkTheme = theme.value
-			) {
-				MainScreen(
-					viewModel = viewModel
-				)
-			}
-		}
-	}
+            AppTheme(
+                isDarkTheme = theme.value
+            ) {
+                MainScreen(
+                    viewModel = viewModel
+                )
+            }
+        }
+    }
 }

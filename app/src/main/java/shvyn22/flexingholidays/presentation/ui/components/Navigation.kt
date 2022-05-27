@@ -16,36 +16,36 @@ import shvyn22.flexingholidays.presentation.browse.BrowseScreen
 import shvyn22.flexingholidays.presentation.favorite.FavoriteScreen
 
 enum class Screen(
-	val route: String,
-	@StringRes val resourceId: Int,
-	val icon: ImageVector
+    val route: String,
+    @StringRes val resourceId: Int,
+    val icon: ImageVector
 ) {
-	Browse("Browse", R.string.text_browse, Icons.Filled.Public),
-	Favorite("Favorite", R.string.text_favorite, Icons.Filled.Favorite)
+    Browse("Browse", R.string.text_browse, Icons.Filled.Public),
+    Favorite("Favorite", R.string.text_favorite, Icons.Filled.Favorite)
 }
 
 @Composable
 fun NavigationConfig(
-	navController: NavHostController,
-	viewModel: MainViewModel,
-	modifier: Modifier = Modifier
+    navController: NavHostController,
+    viewModel: MainViewModel,
+    modifier: Modifier = Modifier
 ) {
-	NavHost(
-		navController = navController,
-		startDestination = Screen.Browse.route
-	) {
-		composable(Screen.Browse.route) {
-			BrowseScreen(
-				viewModel = viewModel,
-				modifier = modifier
-			)
-		}
+    NavHost(
+        navController = navController,
+        startDestination = Screen.Browse.route
+    ) {
+        composable(Screen.Browse.route) {
+            BrowseScreen(
+                viewModel = viewModel,
+                modifier = modifier
+            )
+        }
 
-		composable(Screen.Favorite.route) {
-			FavoriteScreen(
-				viewModel = viewModel,
-				modifier = modifier
-			)
-		}
-	}
+        composable(Screen.Favorite.route) {
+            FavoriteScreen(
+                viewModel = viewModel,
+                modifier = modifier
+            )
+        }
+    }
 }

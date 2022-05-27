@@ -18,18 +18,18 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object PreferencesModule {
 
-	@Singleton
-	@Provides
-	fun provideDataStore(app: Application): DataStore<Preferences> =
-		PreferenceDataStoreFactory.create(
-			produceFile = {
-				app.preferencesDataStoreFile(DATASTORE_FILENAME)
-			}
-		)
+    @Singleton
+    @Provides
+    fun provideDataStore(app: Application): DataStore<Preferences> =
+        PreferenceDataStoreFactory.create(
+            produceFile = {
+                app.preferencesDataStoreFile(DATASTORE_FILENAME)
+            }
+        )
 
-	@Singleton
-	@Provides
-	fun providePreferencesManager(
-		dataStore: DataStore<Preferences>
-	): PreferencesManager = PreferencesManagerImpl(dataStore)
+    @Singleton
+    @Provides
+    fun providePreferencesManager(
+        dataStore: DataStore<Preferences>
+    ): PreferencesManager = PreferencesManagerImpl(dataStore)
 }

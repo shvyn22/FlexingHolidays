@@ -14,36 +14,36 @@ import shvyn22.flexingholidays.presentation.ui.components.Screen
 
 @Composable
 fun MainScreen(
-	viewModel: MainViewModel,
-	modifier: Modifier = Modifier
+    viewModel: MainViewModel,
+    modifier: Modifier = Modifier
 ) {
-	val navController = rememberNavController()
-	val bottomNavItems = listOf(
-		Screen.Browse,
-		Screen.Favorite
-	)
+    val navController = rememberNavController()
+    val bottomNavItems = listOf(
+        Screen.Browse,
+        Screen.Favorite
+    )
 
-	val isDarkTheme = !MaterialTheme.colors.isLight
+    val isDarkTheme = !MaterialTheme.colors.isLight
 
-	Scaffold(
-		topBar = {
-			AppBar(
-				isDarkTheme = isDarkTheme,
-				onToggleTheme = viewModel::editThemePreferences
-			)
-		},
-		bottomBar = {
-			BottomNavBar(
-				navController = navController,
-				items = bottomNavItems
-			)
-		}
-	) { innerPadding ->
-		NavigationConfig(
-			navController = navController,
-			viewModel = viewModel,
-			modifier = modifier
-				.padding(innerPadding)
-		)
-	}
+    Scaffold(
+        topBar = {
+            AppBar(
+                isDarkTheme = isDarkTheme,
+                onToggleTheme = viewModel::editThemePreferences
+            )
+        },
+        bottomBar = {
+            BottomNavBar(
+                navController = navController,
+                items = bottomNavItems
+            )
+        }
+    ) { innerPadding ->
+        NavigationConfig(
+            navController = navController,
+            viewModel = viewModel,
+            modifier = modifier
+                .padding(innerPadding)
+        )
+    }
 }

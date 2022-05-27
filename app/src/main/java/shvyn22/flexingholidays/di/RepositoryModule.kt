@@ -14,10 +14,10 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object RepositoryModule {
 
-	@Singleton
-	@Provides
-	fun provideRepository(
-		apiService: ApiService,
-		favoriteDao: FavoriteDao
-	): Repository = RepositoryImpl(apiService, favoriteDao)
+    @Singleton
+    @Provides
+    fun provideRepository(
+        apiService: ApiService,
+        favoriteDao: FavoriteDao
+    ): Repository = RepositoryImpl(apiService, favoriteDao)
 }

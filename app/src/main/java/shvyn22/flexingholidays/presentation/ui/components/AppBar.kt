@@ -11,23 +11,23 @@ import shvyn22.flexingholidays.R
 
 @Composable
 fun AppBar(
-	isDarkTheme: Boolean,
-	onToggleTheme: (Boolean) -> Unit,
-	modifier: Modifier = Modifier
+    isDarkTheme: Boolean,
+    onToggleTheme: (Boolean) -> Unit,
+    modifier: Modifier = Modifier
 ) {
-	TopAppBar(
-		title = { Text(stringResource(id = R.string.app_name)) },
-		actions = {
-			IconButton(
-				onClick = { onToggleTheme(!isDarkTheme) }
-			) {
-				Icon(
-					imageVector = if (isDarkTheme) Icons.Filled.LightMode
-					else Icons.Filled.DarkMode,
-					contentDescription = null
-				)
-			}
-		},
-		modifier = modifier
-	)
+    TopAppBar(
+        title = { Text(stringResource(id = R.string.app_name)) },
+        actions = {
+            IconButton(
+                onClick = { onToggleTheme(!isDarkTheme) }
+            ) {
+                Icon(
+                    imageVector = if (isDarkTheme) Icons.Filled.LightMode
+                    else Icons.Filled.DarkMode,
+                    contentDescription = null
+                )
+            }
+        },
+        modifier = modifier
+    )
 }

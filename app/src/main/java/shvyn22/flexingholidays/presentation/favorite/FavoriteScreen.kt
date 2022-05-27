@@ -13,34 +13,34 @@ import shvyn22.flexingholidays.presentation.ui.components.FavoriteHolidayItem
 
 @Composable
 fun FavoriteScreen(
-	viewModel: MainViewModel,
-	modifier: Modifier = Modifier
+    viewModel: MainViewModel,
+    modifier: Modifier = Modifier
 ) {
-	val holidays = viewModel.favoriteHolidays.collectAsState()
+    val holidays = viewModel.favoriteHolidays.collectAsState()
 
-	FavoriteContent(
-		holidays = holidays.value,
-		onDeleteFavoriteHoliday = viewModel::deleteFavoriteHoliday,
-		modifier = modifier
-	)
+    FavoriteContent(
+        holidays = holidays.value,
+        onDeleteFavoriteHoliday = viewModel::deleteFavoriteHoliday,
+        modifier = modifier
+    )
 }
 
 @Composable
 fun FavoriteContent(
-	holidays: List<HolidayModel>,
-	onDeleteFavoriteHoliday: (HolidayModel) -> Unit,
-	modifier: Modifier = Modifier,
+    holidays: List<HolidayModel>,
+    onDeleteFavoriteHoliday: (HolidayModel) -> Unit,
+    modifier: Modifier = Modifier,
 ) {
-	LazyColumn(
-		modifier = modifier
-	) {
-		items(holidays) { holiday ->
-			FavoriteHolidayItem(
-				item = holiday,
-				onDeleteFavoriteHoliday = onDeleteFavoriteHoliday,
-				modifier = Modifier
-					.padding(6.dp)
-			)
-		}
-	}
+    LazyColumn(
+        modifier = modifier
+    ) {
+        items(holidays) { holiday ->
+            FavoriteHolidayItem(
+                item = holiday,
+                onDeleteFavoriteHoliday = onDeleteFavoriteHoliday,
+                modifier = Modifier
+                    .padding(6.dp)
+            )
+        }
+    }
 }

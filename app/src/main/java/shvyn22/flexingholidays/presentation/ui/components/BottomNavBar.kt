@@ -12,36 +12,36 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 
 @Composable
 fun BottomNavBar(
-	navController: NavHostController,
-	items: List<Screen>
+    navController: NavHostController,
+    items: List<Screen>
 ) {
-	BottomNavigation {
-		val navBackStackEntry by navController.currentBackStackEntryAsState()
-		val currentRoute = navBackStackEntry?.destination?.route
-		items.forEach { screen ->
-			BottomNavigationItem(
-				icon = {
-					Icon(
-						imageVector = screen.icon,
-						contentDescription = null
-					)
-				},
-				label = {
-					Text(
-						text = stringResource(id = screen.resourceId)
-					)
-				},
-				selected = currentRoute == screen.route,
-				onClick = {
-					navController.navigate(screen.route) {
-						popUpTo(navController.graph.startDestinationId) {
-							saveState = true
-						}
-						launchSingleTop = true
-						restoreState = true
-					}
-				}
-			)
-		}
-	}
+    BottomNavigation {
+        val navBackStackEntry by navController.currentBackStackEntryAsState()
+        val currentRoute = navBackStackEntry?.destination?.route
+        items.forEach { screen ->
+            BottomNavigationItem(
+                icon = {
+                    Icon(
+                        imageVector = screen.icon,
+                        contentDescription = null
+                    )
+                },
+                label = {
+                    Text(
+                        text = stringResource(id = screen.resourceId)
+                    )
+                },
+                selected = currentRoute == screen.route,
+                onClick = {
+                    navController.navigate(screen.route) {
+                        popUpTo(navController.graph.startDestinationId) {
+                            saveState = true
+                        }
+                        launchSingleTop = true
+                        restoreState = true
+                    }
+                }
+            )
+        }
+    }
 }
